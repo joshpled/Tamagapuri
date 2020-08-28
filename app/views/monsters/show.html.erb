@@ -1,7 +1,6 @@
-<h1><%=@monster.name%> has been created</h1><br>
+<h1>Name: <%=@monster.name%></h1><br>
 Age: <%= @monster.age %><br><br>
-
-
+<div class="monster_img"></div>
 <p>Health:<% @monster.health.times do %>
 <%= image_tag("heart.png", size: "20x20")%>&nbsp;
 <% end %></p>
@@ -14,3 +13,9 @@ Age: <%= @monster.age %><br><br>
 <p>Boredom:<% @monster.boredom.times do %>
 <%= image_tag("heart.png", size: "20x20")%>&nbsp;
 <% end %></p>
+
+
+<%= link_to "Delete Monster", user_monster_path(@monster), method: 'delete' %>
+
+<%= stylesheet_link_tag 'monsters'%>
+

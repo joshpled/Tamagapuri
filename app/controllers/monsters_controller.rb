@@ -22,6 +22,22 @@ class MonstersController < ApplicationController
     def show
         @monster = Monster.find_by_id(params[:id])
     end
+
+    def destroy
+        @monster = Monster.find_by_id(params[:id])
+        @monster.destroy
+        redirect_to root_path
+    end
+
+    def update
+        @monster = Monster.find_by_id(params[:id])
+        if @monster
+            @monster.update(params)
+            redirect_to user_monster_path(@monster)
+        else
+            render 'show'
+        end
+    end
     
     private
 
