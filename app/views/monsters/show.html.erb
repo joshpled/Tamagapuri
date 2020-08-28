@@ -1,1 +1,16 @@
-<%=@monster.name%> has been created
+<h1><%=@monster.name%> has been created</h1><br>
+Age: <%= @monster.age %><br><br>
+
+
+<p>Health:<% @monster.health.times do %>
+<%= image_tag("heart.png", size: "20x20")%>&nbsp;
+<% end %></p>
+<p>Happiness:<% @monster.happiness.times do %>
+<%= image_tag("heart.png", size: "20x20")%>&nbsp;
+<% end %></p>
+<p>Hunger:<% @monster.hunger.times do %>
+<%= image_tag("heart.png", size: "20x20")%>&nbsp;
+<% end %></p>
+<p>Boredom:<% @monster.boredom.times do %>
+<%= image_tag("heart.png", size: "20x20")%>&nbsp;
+<% end %></p>
