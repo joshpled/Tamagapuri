@@ -1,1 +1,15 @@
-<h1>HOME</h1>
+<h1 class="row justify-content-center">HOME</h1>
+<% if current_user %>
+  <h2 class="row justify-content-center"><%= current_user.username %> is logged in.</h2>
+  <% if !!current_user.rupees %>
+    <h3 class="row justify-content-center">Rupees: <%= current_user.rupees %></h3>
+  <% end %>
+  <% if current_user.monsters %>
+    <ul>
+      <% current_user.monsters.each do |m|%>
+        <li><%= m.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="row justify-content-center"><%= link_to "New Monster", new_user_monster_path, class: "btn btn-primary"%></div>
+<% end %>

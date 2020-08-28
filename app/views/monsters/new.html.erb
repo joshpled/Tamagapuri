@@ -1,0 +1,10 @@
+<%= form_for [@user,@monster], class: "form-group" do |f| %> 
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name %>
+    <%= f.hidden_field :age %>
+    <%= f.hidden_field :health %>
+    <%= f.hidden_field :happiness %>
+    <%= f.hidden_field :hunger %>
+    <%= f.hidden_field :boredom %>
+    <%= f.submit "Create Monster" %>
+<% end %>
