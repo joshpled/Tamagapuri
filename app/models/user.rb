@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :monsters
+  has_many :inventories
+  has_many :items, through: :inventories
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -1,0 +1,17 @@
+<div class="row justify-content-center">
+<h1>Welcome to <%= @store.name %>!</h1><br><br>
+</div>
+<div class="row justify-content-center">
+<h3>This is a <%= @store.store_type %> store!</h3>
+</div>
+
+<% @store.items.each do |i|%>
+<p><%= i.name %></p>
+<p><%= i.store_stock %></p>
+<% end %>
+
+<%= link_to "New Item for Store", new_store_item_path(@store)%>
+
+
+<%= link_to "Edit Store", edit_store_path(@store) %>
+<%= link_to "Delete Store", store_path(@store), method: 'delete' %>

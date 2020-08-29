@@ -1,0 +1,5 @@
+<ol>
+<% @stores.each do |s| %>
+<li><%= link_to s.name, store_path(s) %> - <%= s.store_type %></li><br>
+<% end %>
+</ol>
