@@ -1,17 +1,46 @@
 <div class="row justify-content-center">
-<h1>Welcome to <%= @store.name %>!</h1><br><br>
+  <h1>Welcome to <%= @store.name %>!</h1>
+  <br>
+  <br>
 </div>
+<div >
+  <h3 class="row justify-content-center">This is a <%= @store.store_type %> store!</h3><Br><br>
+</div>
+
 <div class="row justify-content-center">
-<h3>This is a <%= @store.store_type %> store!</h3>
-</div>
+<%= link_to "New Item for Store", new_store_item_path(@store), class: "btn btn-primary"%>&nbsp;
+<%= link_to "Edit Store", edit_store_path(@store), class: "btn btn-primary" %>&nbsp;
+<%= link_to "Delete Store", store_path(@store), method: 'delete', class: "btn btn-primary" %></div>
+<br><br>
 
+<% if !@store.items.empty? %>
+<div class="row justify-content-center">
+<div class="w-75 p-3">
+<table class="table table-striped">
+  <tr>
+    <th scope="col" style="text-align:center">Name</th>
+    <th scope="col" style="text-align:center">Price</th>
+    <th scope="col" style="text-align:center">Effectiveness</th>
+    <th scope="col" style="text-align:center">Type</th>
+    <th scope="col"></th>
+  </tr>
 <% @store.items.each do |i|%>
-<p><%= i.name %></p>
-<p><%= i.store_stock %></p>
+<tr>
+  <td style="text-align:center"><%= i.name.capitalize %></td>
+  <td style="text-align:center">&#8377;&nbsp;<%= i.price %></td>
+  <td style="text-align:center"><%= i.effectiveness %></td>
+  <td style="text-align:center"><%= i.item_type.capitalize %></td>
+    <td style="text-align:center"><%= form_for @inventory  do |f| %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :item_id, :value => i.id %>
+      <%= f.submit "Buy #{i.name.capitalize}!" %>
+    <% end %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+</div>
+<% else %>
+<h3 class="row justify-content-center">No Items! </h3>
 <% end %>
-
-<%= link_to "New Item for Store", new_store_item_path(@store)%>
-
-
-<%= link_to "Edit Store", edit_store_path(@store) %>
-<%= link_to "Delete Store", store_path(@store), method: 'delete' %>
+</div>

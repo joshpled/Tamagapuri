@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
 
-  get '/user_items', to: "items#user_items"
-  patch '/user_buys_item/:item_id', to: "items#user_buys_item"
+  resources :inventories, only: :create
   root "home#index"
 
   resource :user do 

@@ -1,22 +1,19 @@
 class ItemsController < ApplicationController
 
-    def user_items
-      @user = User.find_by_id(current_user.id)
-    end
-
     def new
         @store = Store.find_by_id(params[:store_id])
-        @item = @store.items.new
+        @item = Item.new
     end
 
     def create
         @store = Store.find_by_id(params[:store_id])
-        @item = @store.items.create(item_params)
-        if @item.save
-          flash[:success] = "Item successfully created"
-          redirect_to store_path(@item.store)
+        @item = Item.new(item_params)
+        @item.store_item(@store)
+          if @item.id != nil
+            flash[:success] = "Item successfully created"
+            redirect_to store_path(@item.store)
         else
-          flash[:error] = "Something went wrong"
+          flash[:error] = "error"
           render 'new'
         end
     end

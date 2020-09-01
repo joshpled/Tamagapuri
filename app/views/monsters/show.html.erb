@@ -14,6 +14,8 @@ Age: <%= @monster.age %><br><br>
 <%= image_tag("heart.png", size: "20x20")%>&nbsp;
 <% end %></p>
 
+
+
 <%= link_to "Delete Monster", user_monster_path(@monster), method: 'delete' %>
 
 <%= stylesheet_link_tag 'monsters'%>

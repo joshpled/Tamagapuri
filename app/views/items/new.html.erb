@@ -1,3 +1,8 @@
+
+<% if flash[:error] != nil %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
 <div class="row justify-content-center"><%= form_for [@store,@item], class: "form-group"  do|f| %>
 <%= f.label :name, "Name:" %><Br>
 <%= f.text_field :name%><Br>
@@ -7,8 +12,6 @@
 <%= f.text_field :price %><Br><br>
 <%= f.label :effectiveness, "Effectiveness:" %><Br>
 <%= f.text_field :effectiveness %><Br><br>
-<%= f.label :store_stock, "Store Stock:" %><Br>
-<%= f.text_field :store_stock %><Br><br>
 <%= f.submit "Create Item", class: "btn btn-primary btn-block"%>
 <% end %>
 </div>

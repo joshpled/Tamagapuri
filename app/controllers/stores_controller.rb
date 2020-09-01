@@ -35,7 +35,9 @@ class StoresController < ApplicationController
     
 
     def show
+        byebug
         @store = Store.find_by_id(params[:id])
+        @inventory = current_user.inventories.new
     end
 
     def destroy
