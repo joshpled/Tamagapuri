@@ -1,4 +1,3 @@
-# config/webpack/environment.js
 
 const webpack = require('webpack')
 environment.plugins.append(
