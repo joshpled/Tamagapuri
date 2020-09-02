@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   #   case self.type
   #   when food
   #   when toy
-
+      
   #   end
   # end
 

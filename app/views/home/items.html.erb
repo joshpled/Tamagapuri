@@ -1,5 +1,0 @@
-<% current_user.items.each do |i| %>
-<%= i.name %>
-<% q = current_user.inventories.select { |a| a.item_id == i.id} %>
-<%= q.first.quantity %>
-<% end %>
