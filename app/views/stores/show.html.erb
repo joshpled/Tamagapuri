@@ -13,6 +13,16 @@
 <%= link_to "Delete Store", store_path(@store), method: 'delete', class: "btn btn-primary" %></div>
 <br><br>
 
+<% if flash[:message] %>
+  <div class="alert alert-primary" role="alert">
+    <strong><%= flash[:message] %></strong>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+<% end %>
+
+
 <% if !@store.items.empty? %>
 <div class="row justify-content-center">
 <div class="w-75 p-3">
@@ -33,6 +43,7 @@
     <td style="text-align:center"><%= form_for @inventory  do |f| %>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :item_id, :value => i.id %>
+      <%= f.hidden_field :store_id, :value => @store.id %>
       <%= f.submit "Buy #{i.name.capitalize}!" %>
     <% end %></td>
     </tr>

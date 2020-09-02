@@ -9,10 +9,11 @@ class Item < ApplicationRecord
   def store_item(store)
     # byebug
     if store.items.include?(self)
-      flash[:error] = "Already in Store"
+      "#{self.name} already in Store"
     else
       store.items << self
       store.save
+      "#{self.name} Added to Store!"
     end 
    
   end

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  
     def new
         @store = Store.find_by_id(params[:store_id])
         @item = Item.new
@@ -8,14 +8,16 @@ class ItemsController < ApplicationController
     def create
         @store = Store.find_by_id(params[:store_id])
         @item = Item.new(item_params)
-        @item.store_item(@store)
+        message = @item.store_item(@store)
           if @item.id != nil
-            flash[:success] = "Item successfully created"
-            redirect_to store_path(@item.store)
-        else
-          flash[:error] = "error"
-          render 'new'
+            redirect_to store_path(@item.store), flash: { message: message }
+          else
+          render 'new', flash: { message: message }
         end
+    end
+
+    def update
+      
     end
 
     def show

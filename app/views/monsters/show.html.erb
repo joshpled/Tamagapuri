@@ -1,22 +1,28 @@
-<h1>Name: <%=@monster.name%></h1><br>
-Age: <%= @monster.age %><br><br>
-<div class="monster_img"></div>
-<p>Health:<% @monster.health.times do %>
-<%= image_tag("heart.png", size: "20x20")%>&nbsp;
-<% end %></p>
-<p>Happiness:<% @monster.happiness.times do %>
-<%= image_tag("heart.png", size: "20x20")%>&nbsp;
-<% end %></p>
-<p>Hunger:<% @monster.hunger.times do %>
-<%= image_tag("heart.png", size: "20x20")%>&nbsp;
-<% end %></p>
-<p>Boredom:<% @monster.boredom.times do %>
-<%= image_tag("heart.png", size: "20x20")%>&nbsp;
-<% end %></p>
-
-
-
-<%= link_to "Delete Monster", user_monster_path(@monster), method: 'delete' %>
-
-<%= stylesheet_link_tag 'monsters'%>
-
+<center>
+  <h1>Name: <%=@monster.name%></h1>
+  <br>
+  Age: <%= @monster.age %><br>
+  <br>
+  <div class="monster_img"></div>
+  <p>Health:<% @monster.health.times do %>
+      <%= image_tag("heart.png", size: "20x20")%>&nbsp;
+    <% end %></p>
+  <p>Happiness:<% @monster.happiness.times do %>
+      <%= image_tag("heart.png", size: "20x20")%>&nbsp;
+    <% end %></p>
+  <p>Hunger:<% @monster.hunger.times do %>
+      <%= image_tag("heart.png", size: "20x20")%>&nbsp;
+    <% end %></p>
+  <p>Boredom:<% @monster.boredom.times do %>
+      <%= image_tag("heart.png", size: "20x20")%>&nbsp;
+    <% end %></p>
+  <%= link_to "Delete Monster", user_monster_path(@monster), method: 'delete' %>
+  <%= stylesheet_link_tag 'monsters'%>
+  <br>
+  <% current_user.items.each do |i| %>
+    <%= i.name %>
+    <% q = current_user.inventories.select { |a| a.item_id == i.id} %>
+    <%= q.first.quantity %>
+    <%= form_for  %>
+  <% end %>
+</center>

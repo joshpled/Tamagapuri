@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
+  
+
+
 
   resources :inventories, only: :create
   root "home#index"
+  get "/user/items", to: "home#items", as: 'user_items'
 
   resource :user do 
     resources :monsters
