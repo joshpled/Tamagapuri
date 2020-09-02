@@ -2,6 +2,8 @@
 <%= form_for [@user,@monster], class: "form-group" do |f| %> 
     <%= f.label :name, "Name:" %>
     <%= f.text_field :name %>
+    <%= f.label :color, "Color:" %>
+    <%= f.select :color, [["Blue",1],["Green",2],["Red",3],["White",4]]%>
     <%= f.hidden_field :age %>
     <%= f.hidden_field :health %>
     <%= f.hidden_field :happiness %>

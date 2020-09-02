@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   root "home#index"
   
   get "/user/items", to: "home#items", as: 'user_items'
-  
-  resources :inventories, only: :create
+
+  resources :inventories, only: [:create, :update]
 
   resource :user do 
     resources :monsters

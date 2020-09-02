@@ -4,7 +4,7 @@
   <br>
   Age: <%= @monster.age %><br>
   <br>
-  <div class="monster_img"></div>
+  <div class="monster_img" id="monster<%=@monster.color%>"></div>
   <p>Health:<% @monster.health.times do %>
       <%= image_tag("heart.png", size: "20x20")%>&nbsp;
     <% end %></p>
@@ -17,12 +17,14 @@
   <p>Boredom:<% @monster.boredom.times do %>
       <%= image_tag("heart.png", size: "20x20")%>&nbsp;
     <% end %></p>
-  <%= link_to "Delete Monster", user_monster_path(@monster), method: 'delete' %>
+  <%= button_to "Delete Monster", user_monster_path(@monster), method: 'delete', class: "btn btn-primary" %>
   <%= stylesheet_link_tag 'monsters'%>
   <br>
-  <% current_user.items.each do |i| %>
-    <%= i.name %>
-    <% q = current_user.inventories.select { |a| a.item_id == i.id} %>
-    <%= q.first.quantity %>
-  <% end %>
-</center>
+  <div class="w-50 p-3">
+    <h4><u>Items</u></h4>
+    <% current_user.items.each do |i| %>
+      <% q = current_user.inventories.select { |a| a.item_id == i.id} %>
+      <%= link_to "#{i.name.capitalize} - #{q.first.quantity}", root_path, class: "btn btn-primary" %>
+    <% end %>
+    <div>
+    </center>

@@ -7,6 +7,10 @@ class InventoriesController < ApplicationController
         message = inventory.exist?
         redirect_to store_path(store), flash: { message: message }
     end
+
+    def update
+
+    end
     
     private
 

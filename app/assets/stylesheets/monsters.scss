@@ -1,10 +1,21 @@
 // Place all the styles related to the monsters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#monster1{
+  background-image : url("monsters/Slime_Medium_Blue.png");
+}
+#monster2{
+  background-image : url("monsters/Slime_Medium_Green.png");
+}
+#monster3{
+  background-image : url("monsters/Slime_Medium_Red.png");
+}
+#monster4{
+  background-image : url("monsters/Slime_Medium_White.png");
+}
 .monster_img{
     width: 128px;
     height: 128px;
-    background-image : url("monsters/Slime_Medium_Blue.png");
     animation: moveX 1s steps(4) infinite;
     background-size: 512px;
   }
@@ -12,3 +23,4 @@
     from{background-position-x:0px;}
     to{background-position-x:-512px;}
   }
+  // 

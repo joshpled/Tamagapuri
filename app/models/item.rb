@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   before_save { name.downcase! }
 
   def store_item(store)
-    # byebug
     if store.items.include?(self)
       "#{self.name} already in Store"
     else
@@ -17,14 +16,5 @@ class Item < ApplicationRecord
     end 
    
   end
-
-
-  # def use_item
-  #   case self.type
-  #   when food
-  #   when toy
-      
-  #   end
-  # end
 
 end

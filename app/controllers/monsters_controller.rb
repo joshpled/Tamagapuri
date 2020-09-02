@@ -9,7 +9,7 @@ class MonstersController < ApplicationController
         @monster = @user.monsters.new
     end
 
-    def create 
+    def create
         @user = User.find_by_id(current_user.id)
         @monster = @user.monsters.create(monster_params)
         if @monster.save
@@ -42,7 +42,7 @@ class MonstersController < ApplicationController
     private
 
     def monster_params
-        params.require(:monster).permit(:name, :age, :health, :happiness, :hunger, :boredom)
+        params.require(:monster).permit(:name, :age, :health, :happiness, :hunger, :boredom, :color)
     end
 
 end

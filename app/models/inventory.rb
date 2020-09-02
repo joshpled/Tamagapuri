@@ -13,4 +13,9 @@ class Inventory < ApplicationRecord
       "+1 #{Item.find_by_id(item.id).name.capitalize}"
     end
   end
+
+  def use_item
+    byebug
+  end
+  
 end
