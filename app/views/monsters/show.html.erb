@@ -23,6 +23,5 @@
     <%= i.name %>
     <% q = current_user.inventories.select { |a| a.item_id == i.id} %>
     <%= q.first.quantity %>
-    <%= form_for  %>
   <% end %>
 </center>

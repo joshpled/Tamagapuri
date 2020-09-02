@@ -18,4 +18,13 @@ class Item < ApplicationRecord
    
   end
 
+
+  # def use_item
+  #   case self.type
+  #   when food
+  #   when toy
+
+  #   end
+  # end
+
 end
