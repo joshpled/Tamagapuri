@@ -4,7 +4,7 @@
 <%= f.label :name, "Name:" %><Br>
 <%= f.text_field :name%><Br>
 <%= f.label :item_type, "Item Type:" %><Br>
-<%= f.text_field :item_type %><Br><br>
+<%= f.select :item_type, [["TOY","toy"],["MEDICINE","medicine"],["FOOD","food"]]%><br>
 <%= f.label :price, "Price:" %><Br>
 <%= f.text_field :price %><Br><br>
 <%= f.label :effectiveness, "Effectiveness:" %><Br>

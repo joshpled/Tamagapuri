@@ -33,7 +33,6 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find_by_id(params[:id])
-    @inventory = current_user.inventories.new
   end
 
   def destroy

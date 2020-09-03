@@ -1,13 +1,24 @@
 <%= render 'layouts/error' %>
-<%= form_for [@user,@monster], class: "form-group" do |f| %> 
+<div class="container w-50 p-3">
+<div class="card">
+ <div class="card-header">
+ New Monster
+ </div>
+  <div class="card-body">
+    <h4 class="card-title">Create a New Monster!</h4>
+    <p class="card-text">
+      <%= form_for [@user,@monster], class: "form-group" do |f| %> 
     <%= f.label :name, "Name:" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, {class: "form-control"} %><br>
     <%= f.label :color, "Color:" %>
-    <%= f.select :color, [["Blue",1],["Green",2],["Red",3],["White",4]]%>
+    <%= f.select(:color, [["Blue",1],["Green",2],["Red",3],["White",4]], {}, {class: "form-control"})%>
     <%= f.hidden_field :age %>
     <%= f.hidden_field :health %>
     <%= f.hidden_field :happiness %>
     <%= f.hidden_field :hunger %>
-    <%= f.hidden_field :boredom %>
-    <%= f.submit "Create Monster" %>
+    <%= f.hidden_field :boredom %></p>
+    <br><div class="text-right"><%= f.submit "Create Monster", class: "btn btn-primary" %></div>
 <% end %>
+  </div>
+</div>
+</div>

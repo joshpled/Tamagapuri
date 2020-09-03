@@ -9,14 +9,17 @@ class Monster < ApplicationRecord
     case inventory.item.item_type
     when "food"
         self.hunger += inventory.item.effectiveness
+        self.boredom -= 1
         inventory.quantity -= 1
         self.hunger = self.hunger.clamp(0,5)
     when "medicine"
       self.health += inventory.item.effectiveness
+      self.hunger -= 2
       inventory.quantity -= 1
       self.health = self.health.clamp(0,5)
     when "toy"
       self.boredom += inventory.item.effectiveness
+      self.hunger -= 1
       inventory.quantity -= 1
       self.boredom = self.boredom.clamp(0, 5)
     else

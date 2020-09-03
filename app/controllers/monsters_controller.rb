@@ -30,10 +30,11 @@ class MonstersController < ApplicationController
     end
 
     def update_attributes
-        monster = Monster.find_by_id(params[:id])
-        item = monster.give_item_to_monster(params)
+        # byebug
+        @monster = Monster.find_by_id(params[:id])
+        item = @monster.give_item_to_monster(params)
         if item != nil
-            redirect_to user_monster_path(monster)
+            redirect_to user_monster_path(@monster)
         else
             render 'show'
         end

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
   
   root "home#index"
-  # put "monster_attributes/:id", to: 'monsters#update_attributes'
+  
   match "monster_attributes/:id" => "monsters#update_attributes", :via => :put, :as => :update_attributes
 
-  resources :inventories, only: [:create, :update]
+  resources :inventories, only: :create
 
   resource :user do 
     resources :monsters

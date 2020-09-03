@@ -1,3 +1,4 @@
+<div class="container">
 <%- if controller_name != 'sessions' %>
 <div class="row justify-content-center">
   <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary" %>&nbsp;<br />
@@ -5,7 +6,7 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-<br><div class="row justify-content-center">
+<br><br><div class="row justify-content-center">
   <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-secondary" %><br />
   </div><br>
 <% end %>
@@ -35,3 +36,4 @@
   <% end %>
   </div>
 <% end %>
+</div>

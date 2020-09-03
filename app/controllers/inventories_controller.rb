@@ -5,11 +5,7 @@ class InventoriesController < ApplicationController
         store = Store.find_by_id(params[:inventory][:store_id])
         @user = current_user
         message = inventory.exist?
-        redirect_to store_path(store), flash: { message: message }
-    end
-
-    def update
-
+        redirect_to store_items_path(store), flash: { message: message }
     end
     
     private

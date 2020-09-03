@@ -11,7 +11,7 @@
 <tr>
   <td style="text-align:center"><%= s.name.split.map { |x| x.capitalize }.join(" ") %></td>
   <td style="text-align:center"><%= s.store_type.capitalize%></td>
-  <td style="text-align:center"><%= link_to "Go to Store", store_path(s), class: "btn btn-primary"%></td>
+  <td style="text-align:center"><%= link_to "Go to Store", store_items_path(s), class: "btn btn-primary"%></td>
     </tr>
   <% end %>
 </table>
