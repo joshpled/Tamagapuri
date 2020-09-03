@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
   
         <% current_user.monsters.each do |m|%>
-          <%= button_to "#{m.name}", user_monster_path(m),method: :get, class: "btn btn-sq btn-primary" %><br>
+          <%= button_to "#{m.name}", user_monster_path(m),method: :get, class: "btn btn-sq btn-primary" %>&nbsp;&nbsp;<br>
         <% end %>
 
     </div>

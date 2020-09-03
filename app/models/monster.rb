@@ -30,6 +30,10 @@ class Monster < ApplicationRecord
     return true
   end
 
+  def monster_age
+    
+  end
+
   private
 
   def average_happiness

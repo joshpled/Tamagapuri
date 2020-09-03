@@ -16,6 +16,7 @@ class MonstersController < ApplicationController
         if @monster.save
             redirect_to root_path
         else
+            message = "Error"
             render 'new'
         end 
     end

@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   validates :price, :item_type, :effectiveness, presence: true
   before_save { name.downcase! }
 
+  
+
   def store_item(store)
     if store.items.include?(self)
       "#{self.name} already in Store"

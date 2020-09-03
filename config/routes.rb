@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-  resource :slot_machines, only: [:show, :update]
-  
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
   
   root "home#index"
@@ -9,13 +6,14 @@ Rails.application.routes.draw do
   match "monster_attributes/:id" => "monsters#update_attributes", :via => :put, :as => :update_attributes
 
   resources :inventories, only: :create
+  resource :slot_machines, only: [:show, :update]
 
-  resource :user do 
-    resources :monsters
+  resource :user, only: :create do 
+    resources :monsters, except: :index
   end
 
   resources :stores do 
-    resources :items
+    resources :items, except: :show
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
