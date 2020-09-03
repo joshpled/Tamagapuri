@@ -24,7 +24,7 @@
                 <%= f.hidden_field :user_id %>
                 <%= f.hidden_field :item_id, :value => i.id %>
                 <%= f.hidden_field :store_id, :value => @store.id %>
-                <%= f.submit "Buy #{i.name.capitalize}!" %>
+                <%= f.submit "Buy #{i.name.capitalize}!", class: "btn btn-primary"%>
               <% end %></td>
           </tr>
         <% end %>
