@@ -1,0 +1,30 @@
+// Place all the styles related to the slot_machines controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+div.parent {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  div.image1 {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+  }
+  div.image2 {
+    position: absolute;
+    top: 50px;
+    left: 160px;
+  }
+  div.image3 {
+    position: absolute;
+    top: 50px;
+    left: 290px;
+  }
+  #parent{
+      height: 200px;
+  }
+  #image_size{
+      height: 100px;
+  }
+ 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :slot_machines, only: [:show, :update]
+  
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
   
   root "home#index"

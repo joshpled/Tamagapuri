@@ -1,4 +1,5 @@
 class InventoriesController < ApplicationController
+    before_action :authenticate_user!
 
     def create
         inventory = Inventory.new(inventory_params)
