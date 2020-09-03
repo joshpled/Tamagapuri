@@ -29,15 +29,31 @@ class MonstersController < ApplicationController
         redirect_to root_path
     end
 
-    def update
-        @monster = Monster.find_by_id(params[:id])
-        if @monster
-            @monster.update(params)
-            redirect_to user_monster_path(@monster)
+    def update_attributes
+        monster = Monster.find_by_id(params[:id])
+        item = monster.give_item_to_monster(params)
+        if item != nil
+            redirect_to user_monster_path(monster)
         else
             render 'show'
         end
     end
+
+    def edit
+        @monster = Monster.find_by_id(params[:id])
+    end
+
+    def update
+        @monster = Monster.find(params[:id])
+        if @monster.update_attributes(monster_params)
+          flash[:success] = "Monster was successfully updated"
+          redirect_to user_monster_path(@monster)
+        else
+          flash[:error] = "Something went wrong"
+          render 'edit'
+        end
+    end
+    
     
     private
 

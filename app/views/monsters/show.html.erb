@@ -4,11 +4,12 @@
   <br>
   Age: <%= @monster.age %><br>
   <br>
-  <div class="monster_img" id="monster<%=@monster.color%>"></div>
-  <p>Health:<% @monster.health.times do %>
-      <%= image_tag("heart.png", size: "20x20")%>&nbsp;
-    <% end %></p>
   <p>Happiness:<% @monster.happiness.times do %>
+      <%= image_tag("heart.png", size: "20x20")%>&nbsp;
+    <% end %></p><br>
+  <div class="monster_img" id="monster<%=@monster.color%>"></div>
+  
+  <p>Health:<% @monster.health.times do %>
       <%= image_tag("heart.png", size: "20x20")%>&nbsp;
     <% end %></p>
   <p>Hunger:<% @monster.hunger.times do %>
@@ -17,14 +18,20 @@
   <p>Boredom:<% @monster.boredom.times do %>
       <%= image_tag("heart.png", size: "20x20")%>&nbsp;
     <% end %></p>
-  <%= button_to "Delete Monster", user_monster_path(@monster), method: 'delete', class: "btn btn-primary" %>
+  <%= button_to "Delete Monster", user_monster_path(@monster), method: 'delete', class: "btn btn-primary" %><br>
+  <%= link_to "Edit Monster", edit_user_monster_path(@monster), class: "btn btn-primary" %>
   <%= stylesheet_link_tag 'monsters'%>
   <br>
   <div class="w-50 p-3">
     <h4><u>Items</u></h4>
-    <% current_user.items.each do |i| %>
-      <% q = current_user.inventories.select { |a| a.item_id == i.id} %>
-      <%= link_to "#{i.name.capitalize} - #{q.first.quantity}", root_path, class: "btn btn-primary" %>
+    <% current_user.inventories.each do |i| %>
+      <%= form_for :monster, url: update_attributes_path(@monster), method: :put do |f| %>
+        <%= f.hidden_field :monster_id, :value => @monster.id %>
+        <%= f.hidden_field :item_id, :value => i.item.id %>
+        <%= f.hidden_field :inventory_id, :value => i.id %>
+        <%= f.submit "#{i.item.name.capitalize} - #{i.quantity}", class: "btn btn-primary"%><br>
+        <br>
+      <% end %>
     <% end %>
     <div>
     </center>

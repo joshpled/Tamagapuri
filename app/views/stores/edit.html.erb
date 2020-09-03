@@ -1,5 +1,6 @@
 <%= render 'layouts/error' %>
-<div class="row justify-content-center"><%= form_for @store, class: "form-group"  do|f| %>
+<div class="row justify-content-center">
+<%= form_for @store, class: "form-group"  do|f| %>
 <%= f.label :name, "Name:" %><Br>
 <%= f.text_field :name%><Br>
 <%= f.label :store_type, "Type:" %><Br>
