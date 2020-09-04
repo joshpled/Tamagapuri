@@ -1,34 +1,30 @@
-<%= render 'layouts/error' %>
 <% if current_user %>
-<h1 class="row justify-content-center">Welcome, <%= current_user.username.capitalize %></h1>
+  <h1 class="row justify-content-center">Welcome, <%= current_user.username.titleize %></h1>
   <% if !!current_user.rupees %>
-    <h3 class="row justify-content-center">Rupees: <%= current_user.rupees %></h3>
+    <h3 class="row justify-content-center">Rupees: <%= current_user.rupees %>&#8377;</h3>
   <% end %>
-  <% if current_user.monsters %>
-  <h3 class="row justify-content-center">Your Monsters:</h3>
-    <div style="height: 15px;"></div>
+  <% if !current_user.monsters.empty? %>
     <div class="row justify-content-center">
-  
-        <% current_user.monsters.each do |m|%>
-          <%= button_to "#{m.name}", user_monster_path(m),method: :get, class: "btn btn-sq btn-primary" %>&nbsp;&nbsp;<br>
-        <% end %>
-
+      <div class="card" style="width: 22rem;">
+        <h3 class="card-header text-center">Your Monsters</h3>
+        <div class="card-body">
+          <% current_user.monsters.each do |m|%>
+            <div class="w-30 d-inline-block"><%= button_to "#{m.name}", user_monster_path(m),method: :get, class: "btn btn-sq btn-primary"%>&nbsp;&nbsp;
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <div style="height: 25px;"></div>
-  <div class="row justify-content-center">
-  
-  <%= link_to "New Monster", new_user_monster_path, class: "btn btn-primary"%>&nbsp;
-  <%= link_to "Go to the Store", stores_path, class: "btn btn-secondary" %>&nbsp;
-  <%= link_to "Gamble!", slot_machines_path, class: "btn btn-primary" %>
-  </div>
   <% else %>
-  <h1 class="row justify-content-center">Welcome</h1> 
+  <br>
+    <h2 class="row justify-content-center">MAKE A MONSTER!</h2>
+  <% end %>
+  <BR>
+  <div class="row justify-content-center">
+    <%= link_to "New Monster", new_user_monster_path, class: "btn btn-primary"%>&nbsp;
+    <%= link_to "Go to the Store", stores_path, class: "btn btn-secondary" %>&nbsp;
+    <%= link_to "Gamble!", slot_machines_path, class: "btn btn-primary" %>
+  </div>
+<% else %>
+  <h1 class="row justify-content-center">Welcome</h1>
 <% end %>
-
-<style>
-.btn-sq {
-  width: 100px !important;
-  height: 100px !important;
-}
-</style>

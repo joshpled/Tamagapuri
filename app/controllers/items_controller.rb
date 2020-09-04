@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def index
     @store = Store.find_by_id(params[:store_id])
     @inventory = current_user.inventories.new

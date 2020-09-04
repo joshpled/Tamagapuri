@@ -7,7 +7,7 @@ class Inventory < ApplicationRecord
     if user.inventories.exists?(item_id: self.item_id) == false
       user.inventories << self
       user.rupees = user.rupees - self.item.price 
-      user.rupees = user.rupees.clamp(0, 1000)
+      user.rupees = user.rupees.clamp(0, 100000)
       user.save
       "#{Item.find_by_id(self.item.id).name.capitalize} Added to Your Inventory!"
     else
@@ -15,7 +15,7 @@ class Inventory < ApplicationRecord
       item.quantity += 1
       item.save
       user.rupees = user.rupees - self.item.price
-      user.rupees = user.rupees.clamp(0, 1000)
+      user.rupees = user.rupees.clamp(0, 100000)
       user.save
       "+1 #{Item.find_by_id(item.id).name.capitalize}"
     end
