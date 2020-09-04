@@ -16,7 +16,7 @@ class MonstersController < ApplicationController
         if @monster.save
             redirect_to root_path
         else
-            message = "Error"
+            flash.now[:message] = "#{@monster.errors.messages.keys[0].to_s.capitalize} #{@monster.errors.messages.values[0][0].to_s}"
             render 'new'
         end 
     end
@@ -28,6 +28,7 @@ class MonstersController < ApplicationController
     def destroy
         @monster = Monster.find_by_id(params[:id])
         @monster.destroy
+        flash.now[:message] = "Monster was successfully deleted"
         redirect_to root_path
     end
 
@@ -49,10 +50,10 @@ class MonstersController < ApplicationController
     def update
         @monster = Monster.find(params[:id])
         if @monster.update_attributes(monster_params)
-          flash[:success] = "Monster was successfully updated"
+          flash.now[:message] = "Monster was successfully updated"
           redirect_to user_monster_path(@monster)
         else
-          flash[:error] = "Something went wrong"
+          flash.now[:message] = "#{@monster.errors.messages.keys[0].to_s.capitalize} #{@monster.errors.messages.values[0][0].to_s}"
           render 'edit'
         end
     end
