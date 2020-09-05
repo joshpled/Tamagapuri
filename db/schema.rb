@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_161758) do
-
+ActiveRecord::Schema.define(version: 2020_09_05_022059) do
   create_table "inventories", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "user_id", null: false
@@ -27,10 +26,8 @@ ActiveRecord::Schema.define(version: 2020_09_03_161758) do
     t.integer "price"
     t.string "item_type"
     t.integer "effectiveness"
-    t.integer "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id"], name: "index_items_on_store_id"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -55,13 +52,6 @@ ActiveRecord::Schema.define(version: 2020_09_03_161758) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "stores", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "store_type"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -80,6 +70,5 @@ ActiveRecord::Schema.define(version: 2020_09_03_161758) do
 
   add_foreign_key "inventories", "items"
   add_foreign_key "inventories", "users"
-  add_foreign_key "items", "stores"
   add_foreign_key "monsters", "users"
 end

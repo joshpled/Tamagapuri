@@ -1,24 +1,24 @@
 <div class="d-flex justify-content-center" >
   <div class="parent">
-    <%= image_tag('slotmachine/slot-machine.png', id:"parent") %>
+    <%= image_tag("slotmachine/slot-machine.png", id: "parent") %>
     <div class="image1">
-    <%= image_tag("slotmachine/#{@array[0]}.png", id:"image_size")%>
+    <%= image_tag("slotmachine/#{@array[0]}.png", id: "image_size") %>
     </div>
     <div class="image2">
-    <%= image_tag("slotmachine/#{@array[1]}.png", id:"image_size")%>
+    <%= image_tag("slotmachine/#{@array[1]}.png", id: "image_size") %>
     </div>
     <div class="image3">
-    <%= image_tag("slotmachine/#{@array[2]}.png", id:"image_size")%>
+    <%= image_tag("slotmachine/#{@array[2]}.png", id: "image_size") %>
     </div>
   </div>
 </div>
 
 <h3 class="d-flex justify-content-center">My Rupees: <%= current_user.rupees %></h3>
  <div class="d-flex justify-content-center" >
- <%= form_for @slot, url: slot_machines_path(@slot), method: :patch  do |f| %>
+ <%= form_for @slot, url: slot_machines_path(@slot), method: :patch do |f| %>
         <%= f.submit "Bid ₹ 1", class: "btn btn-primary" %>&nbsp;
       <% end %>
       </div>
 <br>
-      <%= render 'layouts/error' %>
-<%= stylesheet_link_tag 'slot_machines'%>
+      <%= render "layouts/error" %>
+<%= stylesheet_link_tag "slot_machines" %>

@@ -1,4 +1,4 @@
-<%= render 'layouts/error' %>
+<%= render "layouts/error" %>
 <div class="container">
 <div class="card">
  <div class="card-header">
@@ -7,17 +7,17 @@
   <div class="card-body">
     <h4 class="card-title">Edit your Monster!</h4>
     <p class="card-text">
-<%= form_for [@user,@monster], url: user_monster_path(@monster), method: :patch, class: "form-group" do |f| %> 
+<%= form_for [@user, @monster], url: user_monster_path(@monster), method: :patch, class: "form-group" do |f| %> 
     <%= f.label :name, "Name:" %>
-    <%= f.text_field :name, {class: "form-control"} %>
+    <%= f.text_field :name, { class: "form-control" } %>
     <%= f.label :color, "Color:" %>
-    <%= f.select(:color, [["Blue",1],["Green",2],["Red",3],["White",4]], {}, {class: "form-control"})%>
+    <%= f.select(:color, [["Blue", 1], ["Green", 2], ["Red", 3], ["White", 4]], {}, { class: "form-control" }) %>
     <%= f.hidden_field :age %>
     <%= f.hidden_field :health %>
     <%= f.hidden_field :happiness %>
     <%= f.hidden_field :hunger %>
     <%= f.hidden_field :boredom %>
-    <br><div class="text-right"><%= f.submit "Edit Monster", class: "btn btn-primary"  %></div>
+    <br><div class="text-right"><%= f.submit "Edit Monster", class: "btn btn-primary" %></div>
 <% end %>
 </div>
 </div>

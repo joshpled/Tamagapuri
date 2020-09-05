@@ -1,4 +1,4 @@
-<%= render 'layouts/error' %>
+<%= render "layouts/error" %>
 <% if current_user %>
   <h2 class="row justify-content-center">Welcome, <%= current_user.username.titleize %></h2>
   <% if !!current_user.rupees %>
@@ -9,8 +9,8 @@
       <div class="card" style="width: 22rem;">
         <h3 class="card-header text-center">Your Monsters</h3>
         <div class="card-body">
-          <% current_user.monsters.each do |m|%>
-            <div class="w-30 d-inline-block"><%= button_to "#{m.name}", user_monster_path(m),method: :get, class: "btn btn-sq btn-primary"%>&nbsp;&nbsp;
+          <% current_user.monsters.each do |m| %>
+            <div class="w-30 d-inline-block"><%= button_to "#{m.name}", user_monster_path(m), method: :get, class: "btn btn-sq btn-primary" %>&nbsp;&nbsp;
             </div>
           <% end %>
         </div>
@@ -22,8 +22,8 @@
   <% end %>
   <BR>
   <div class="row justify-content-center">
-    <%= link_to "New Monster", new_user_monster_path, class: "btn btn-primary"%>&nbsp;
-    <%= link_to "Go to the Store", stores_path, class: "btn btn-secondary" %>&nbsp;
+    <%= link_to "New Monster", new_user_monster_path, class: "btn btn-primary" %>&nbsp;
+    <%= link_to "Go to the Store", items_path, class: "btn btn-secondary" %>&nbsp;
     <%= link_to "Gamble!", slot_machines_path, class: "btn btn-primary" %>
   </div>
 <% else %>
