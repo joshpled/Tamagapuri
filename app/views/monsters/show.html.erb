@@ -35,23 +35,22 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title text-right">Items</h4>
-           <div class="d-flex justify-content-center bd-highlight mb-3">
-      <% current_user.inventories.each do |i| %>
+       <div class="w-30 d-inline-block">
+       <% current_user.inventories.each do |i| %>
         <% if i.quantity > 0 %>
           <%= form_for :monster, url: update_attributes_path(@monster), method: :put do |f| %>
             <%= f.hidden_field :monster_id, :value => @monster.id %>
             <%= f.hidden_field :item_id, :value => i.item.id %>
             <%= f.hidden_field :inventory_id, :value => i.id %>
-            <div class="p-2 bd-highlight"><%= f.submit "#{i.item.name.capitalize} - #{i.quantity}", class: "btn btn-primary"%>  </div>
+            <%= f.submit "#{i.item.name.capitalize} - #{i.quantity}", class: "btn btn-primary btn-sm mb-1"%>
           <% end %>
-          <br>
-          <br>
         <% end %>
       <% end %>
-    </div>
+           </div>
         </div>
       </div>
     </div><br><br>
+     
 <div class="d-flex justify-content-center">
       <%= form_for @monster, url: user_monster_path(@monster), method: :delete  do |f| %>
         <%= f.submit "Delete Monster", class: "btn btn-primary" %>&nbsp;
@@ -59,3 +58,5 @@
       <%= link_to "Edit Monster", edit_user_monster_path(@monster), class: "btn btn-primary" %>
     </div>
     <%= stylesheet_link_tag 'monsters'%>
+
+    
