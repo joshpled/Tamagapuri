@@ -10,6 +10,7 @@ class MonstersController < ApplicationController
   end
 
   def create
+    byebug
     @user = User.find_by_id(current_user.id)
     @monster = @user.monsters.create(monster_params)
     if @monster.save

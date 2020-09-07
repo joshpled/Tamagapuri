@@ -1,4 +1,4 @@
-<%= render "layouts/error" %>
+
 <div class="container">
 <div class="card">
  <div class="card-header">
@@ -7,18 +7,7 @@
   <div class="card-body">
     <h4 class="card-title">Create a New Monster!</h4>
     <p class="card-text">
-      <%= form_for [@user, @monster], class: "form-group" do |f| %> 
-    <%= f.label :name, "Name:" %>
-    <%= f.text_field :name, { class: "form-control" } %><br>
-    <%= f.label :color, "Color:" %>
-    <%= f.select(:color, [["Blue", 1], ["Green", 2], ["Red", 3], ["White", 4]], {}, { class: "form-control" }) %>
-    <%= f.hidden_field :age %>
-    <%= f.hidden_field :health %>
-    <%= f.hidden_field :happiness %>
-    <%= f.hidden_field :hunger %>
-    <%= f.hidden_field :boredom %></p>
-    <br><div class="text-right"><%= f.submit "Create Monster", class: "btn btn-primary" %></div>
-<% end %>
+<%= render partial: 'monsters/monster_form', locals: {submit_text: "Create Monster"}%>
   </div>
 </div>
 </div>

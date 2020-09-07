@@ -1,4 +1,4 @@
-<%= render "layouts/error" %>
+<%= render partial: "layouts/error", locals: {variable: :message} %>
 <% if current_user %>
   <h2 class="row justify-content-center">Welcome, <%= current_user.username.titleize %></h2>
   <% if !!current_user.rupees %>
