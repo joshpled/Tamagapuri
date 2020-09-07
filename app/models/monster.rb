@@ -3,6 +3,9 @@ class Monster < ApplicationRecord
   validates :name, presence: true
   before_update :average_happiness
 
+  scope :least_happy, -> { order(happiness: :asc)}
+  # Ex:- scope :active, -> {where(:active => true)}
+
   def give_item_to_monster(params)
     inventory = Inventory.find_by_id(params[:monster][:inventory_id])
     case inventory.item.item_type

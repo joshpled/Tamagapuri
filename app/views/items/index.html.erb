@@ -13,7 +13,7 @@
         <th scope="col" style="text-align:center">Type</th>
         <th scope="col"></th>
       </tr>
-      <% @items.each do |i| %>
+      <% @items.effectiveness_sort.each do |i| %>
         <tr>
           <td style="text-align:center"><%= i.name.capitalize %></td>
           <td style="text-align:center">&#8377;&nbsp;<%= i.price %></td>
