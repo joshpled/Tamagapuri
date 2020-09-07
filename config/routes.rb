@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :slot_machines, only: [:show, :update]
 
   resource :user, only: :create do
-    resources :monsters, except: :index
+    resources :monsters, except: :index, shallow: true
   end
 
   resources :items, only: :index

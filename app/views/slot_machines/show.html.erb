@@ -20,5 +20,5 @@
       <% end %>
       </div>
 <br>
-      <%= render "layouts/error" %>
+<%= render partial: "layouts/error", locals: {variable: :message} %>
 <%= stylesheet_link_tag "slot_machines" %>

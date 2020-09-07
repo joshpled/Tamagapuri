@@ -1,4 +1,4 @@
-<%= render "layouts/error" %>
+<%= render partial: "layouts/error", locals: {variable: :message} %>
     <div class="card-deck">
       <div class="card">
         <div class="card-body">
@@ -52,10 +52,10 @@
     </div><br><br>
      
 <div class="d-flex justify-content-center">
-      <%= form_for @monster, url: user_monster_path(@monster), method: :delete do |f| %>
+      <%= form_for @monster, url: monster_path(@monster), method: :delete do |f| %>
         <%= f.submit "Delete Monster", class: "btn btn-primary" %>&nbsp;
       <% end %>
-      <%= link_to "Edit Monster", edit_user_monster_path(@monster), class: "btn btn-primary" %>
+      <%= link_to "Edit Monster", edit_monster_path(@monster), class: "btn btn-primary" %>
     </div>
     <%= stylesheet_link_tag "monsters" %>
 

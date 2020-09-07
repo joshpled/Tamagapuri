@@ -1,4 +1,4 @@
-<%= form_for [@user, @monster], url: user_monster_path(@monster), class: "form-group" do |f| %> 
+<%= form_for [@user, @monster], class: "form-group" do |f| %> 
     <%= f.label :name, "Name:" %>
     <%= f.text_field :name, { class: "form-control" } %>
     <%= f.label :color, "Color:" %>

@@ -10,7 +10,6 @@ class MonstersController < ApplicationController
   end
 
   def create
-    byebug
     @user = User.find_by_id(current_user.id)
     @monster = @user.monsters.create(monster_params)
     if @monster.save
@@ -33,11 +32,10 @@ class MonstersController < ApplicationController
   end
 
   def update_attributes
-    # byebug
     @monster = Monster.find_by_id(params[:id])
     item = @monster.give_item_to_monster(params)
     if item != nil
-      redirect_to user_monster_path(@monster)
+      redirect_to monster_path(@monster)
     else
       render "show"
     end
@@ -51,7 +49,7 @@ class MonstersController < ApplicationController
     @monster = Monster.find(params[:id])
     if @monster.update_attributes(monster_params)
       flash.now[:message] = "Monster was successfully updated"
-      redirect_to user_monster_path(@monster)
+      redirect_to monster_path(@monster)
     else
       flash.now[:message] = "#{@monster.errors.messages.keys[0].to_s.capitalize} #{@monster.errors.messages.values[0][0].to_s}"
       render "edit"
