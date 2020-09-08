@@ -15,7 +15,7 @@ class MonstersController < ApplicationController
     if @monster.save
       redirect_to root_path
     else
-      flash.now[:message] = "#{@monster.errors.messages.keys[0].to_s.capitalize} #{@monster.errors.messages.values[0][0].to_s}"
+      flash.now[:name_error] = "#{@monster.errors.full_messages[0]}"
       render "new"
     end
   end

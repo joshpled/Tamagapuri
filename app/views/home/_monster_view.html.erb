@@ -1,0 +1,16 @@
+<% if !current_user.monsters.empty? %>
+    <div class="row justify-content-center">
+      <div class="card" style="width: 22rem;">
+        <h3 class="card-header text-center">Your Monsters</h3>
+        <div class="card-body">
+          <% current_user.monsters.least_happy.each do |m| %>
+            <div class="w-30 d-inline-block"><%= button_to "#{m.name} - H:#{m.happiness}", monster_path(m), method: :get, class: "btn btn-sq btn-primary" %>&nbsp;&nbsp;
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+  <br>
+    <h2 class="row justify-content-center">MAKE A MONSTER!</h2>
+  <% end %>

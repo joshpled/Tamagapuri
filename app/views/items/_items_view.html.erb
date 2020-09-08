@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+  <div class="container">
+    <table class="table table-striped">
+      <tr>
+        <th scope="col" style="text-align:center">Name</th>
+        <th scope="col" style="text-align:center">Effectiveness</th>
+        <th scope="col" style="text-align:center">Type</th>
+        <th scope="col"></th>
+      </tr>
+      <% @items.effectiveness_sort.each do |i| %>
+        <tr>
+          <td style="text-align:center"><%= i.name.capitalize %></td>
+          <td style="text-align:center"><%= i.effectiveness %></td>
+          <td style="text-align:center"><%= i.item_type.capitalize %></td>
+          <td style="text-align:center"><%= form_for @inventory do |f| %>
+              <%= f.hidden_field :user_id %>
+              <%= f.hidden_field :item_id, :value => i.id %>
+              <%= f.submit "Buy #{i.name.capitalize} -- ₹#{i.price}!", class: "btn btn-primary" %>
+            <% end %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

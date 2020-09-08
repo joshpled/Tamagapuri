@@ -4,22 +4,7 @@
   <% if !!current_user.rupees %>
     <h3 class="row justify-content-center">Rupees: <%= current_user.rupees %>&#8377;</h3>
   <% end %>
-  <% if !current_user.monsters.empty? %>
-    <div class="row justify-content-center">
-      <div class="card" style="width: 22rem;">
-        <h3 class="card-header text-center">Your Monsters</h3>
-        <div class="card-body">
-          <% current_user.monsters.least_happy.each do |m| %>
-            <div class="w-30 d-inline-block"><%= button_to "#{m.name} - H:#{m.happiness}", monster_path(m), method: :get, class: "btn btn-sq btn-primary" %>&nbsp;&nbsp;
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% else %>
-  <br>
-    <h2 class="row justify-content-center">MAKE A MONSTER!</h2>
-  <% end %>
+  <%= render 'home/monster_view' %>
   <BR>
   <div class="row justify-content-center">
     <%= link_to "New Monster", new_user_monster_path, class: "btn btn-primary" %>&nbsp;
@@ -27,13 +12,5 @@
     <%= link_to "Gamble!", slot_machines_path, class: "btn btn-primary" %>
   </div>
 <% else %>
- <div class="card">
-  <div class="card-header text-center">
-    WELCOME
-  </div>
-  <div class="card-body text-center">
-    <h5 class="card-title">Tamagapuri!</h5>
-    <p class="card-text">Collect monsters and keep them alive!</p>
-  </div>
-</div>
+  <%= render 'home/no_current_user_view' %>
 <% end %>

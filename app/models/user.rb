@@ -8,6 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
+  validates :username, presence: true
+
   def self.from_omniauth(auth) ## A custom class constructor I'm building myself
     ## check and see if a user with this provider (github) and uid exists; if not, create it
     where(provider: auth.provider, uid: auth.id).first_or_create do |user|

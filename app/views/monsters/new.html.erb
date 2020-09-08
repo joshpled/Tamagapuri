@@ -1,13 +1,13 @@
-<%= render partial: "layouts/error", locals: {variable: :message} %>
+<%= render partial: "layouts/error", locals: {variable: :name_error} %>
 <div class="container">
-<div class="card">
- <div class="card-header">
- New Monster
- </div>
-  <div class="card-body">
-    <h4 class="card-title">Create a New Monster!</h4>
-    <p class="card-text">
-<%= render partial: 'monsters/monster_form', locals: {submit_text: "Create Monster"}%>
+  <div class="card">
+    <div class="card-header">
+      New Monster
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Create a New Monster!</h4>
+      <p class="card-text">
+        <%= render partial: 'monsters/monster_form', locals: {submit_text: "Create Monster"}%>
+      </div>
+    </div>
   </div>
-</div>
-</div>

@@ -1,0 +1,19 @@
+<div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Age - <%= @monster.age %></h4>
+          <p class="card-text">
+            Health:&nbsp;
+            <% @monster.health.times do %>
+              <%= image_tag("heart.png", size: "20x20") %>&nbsp;
+            <% end %><br><br>
+            Hunger:&nbsp;
+            <% @monster.hunger.times do %>
+              <%= image_tag("heart.png", size: "20x20") %>&nbsp;
+            <% end %><br><br>
+            Boredom:&nbsp;
+            <% @monster.boredom.times do %>
+            <%= image_tag("heart.png", size: "20x20") %>&nbsp;
+          <% end %>
+          </p>
+        </div>
+      </div>

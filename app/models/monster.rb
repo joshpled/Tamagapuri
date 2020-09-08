@@ -4,7 +4,6 @@ class Monster < ApplicationRecord
   before_update :average_happiness
 
   scope :least_happy, -> { order(happiness: :asc)}
-  # Ex:- scope :active, -> {where(:active => true)}
 
   def give_item_to_monster(params)
     inventory = Inventory.find_by_id(params[:monster][:inventory_id])

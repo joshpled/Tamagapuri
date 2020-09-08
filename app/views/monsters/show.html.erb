@@ -1,54 +1,7 @@
-<%= render partial: "layouts/error", locals: {variable: :message} %>
     <div class="card-deck">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Age - <%= @monster.age %></h4>
-          <p class="card-text">
-            Health:&nbsp;
-            <% @monster.health.times do %>
-              <%= image_tag("heart.png", size: "20x20") %>&nbsp;
-            <% end %><br><br>
-            Hunger:&nbsp;
-            <% @monster.hunger.times do %>
-              <%= image_tag("heart.png", size: "20x20") %>&nbsp;
-            <% end %><br><br>
-            Boredom:&nbsp;
-            <% @monster.boredom.times do %>
-            <%= image_tag("heart.png", size: "20x20") %>&nbsp;
-          <% end %>
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title text-center"><%= @monster.name.upcase %></h4>
-          <div class="d-flex justify-content-center">
-            <div class="monster_img" id="monster<%= @monster.color %>"></div></div>
-            <div class="d-flex justify-content-center">
-            Happiness: &nbsp;
-            <% @monster.happiness.times do %>
-                  <%= image_tag("heart.png", size: "20x20") %>&nbsp;
-                <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title text-right">Items</h4>
-       <div class="w-30 d-inline-block">
-       <% current_user.inventories.each do |i| %>
-        <% if i.quantity > 0 %>
-          <%= form_for :monster, url: update_attributes_path(@monster), method: :put do |f| %>
-            <%= f.hidden_field :monster_id, :value => @monster.id %>
-            <%= f.hidden_field :item_id, :value => i.item.id %>
-            <%= f.hidden_field :inventory_id, :value => i.id %>
-            <%= f.submit "#{i.item.name.capitalize} - #{i.quantity}", class: "btn btn-primary btn-sm mb-1" %>
-          <% end %>
-        <% end %>
-      <% end %>
-           </div>
-        </div>
-      </div>
+      <%= render 'monsters/monster_attributes' %>
+      <%= render 'monsters/monster_main_card' %>
+      <%= render 'monsters/monster_items' %>
     </div><br><br>
      
 <div class="d-flex justify-content-center">
@@ -57,6 +10,8 @@
       <% end %>
       <%= link_to "Edit Monster", edit_monster_path(@monster), class: "btn btn-primary" %>
     </div>
+
+
     <%= stylesheet_link_tag "monsters" %>
 
     
