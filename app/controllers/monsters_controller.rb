@@ -61,4 +61,5 @@ class MonstersController < ApplicationController
   def monster_params
     params.require(:monster).permit(:name, :age, :health, :happiness, :hunger, :boredom, :color)
   end
+
 end

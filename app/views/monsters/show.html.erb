@@ -1,10 +1,10 @@
     <div class="card-deck">
-      <%= render 'monsters/monster_attributes' %>
       <%= render 'monsters/monster_main_card' %>
+      <%= render 'monsters/monster_attributes' %>
       <%= render 'monsters/monster_items' %>
     </div><br><br>
      
-<div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
       <%= form_for @monster, url: monster_path(@monster), method: :delete do |f| %>
         <%= f.submit "Delete Monster", class: "btn btn-primary" %>&nbsp;
       <% end %>
