@@ -1,6 +1,9 @@
 <h2 class="row justify-content-center">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<%= render 'devise/sessions/login_error_message' %>
+
   <div class="row justify-content-center">
   <div class="field">
     <%= f.label :email %><br />

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_022059) do
+ActiveRecord::Schema.define(version: 2020_09_10_225747) do
+
   create_table "inventories", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "user_id", null: false
@@ -45,9 +46,9 @@ ActiveRecord::Schema.define(version: 2020_09_05_022059) do
   end
 
   create_table "slot_machines", force: :cascade do |t|
-    t.integer "slot_1"
-    t.integer "slot_2"
-    t.integer "slot_3"
+    t.integer "slot_1", default: 4
+    t.integer "slot_2", default: 4
+    t.integer "slot_3", default: 4
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
