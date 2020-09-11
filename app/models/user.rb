@@ -6,10 +6,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+          :rememberable, :validatable, :omniauthable
 
   validates :username, presence: true
-  validate :password_complexity
+  # validate :password_complexity
 
   def self.from_omniauth(auth) ## A custom class constructor I'm building myself
     ## check and see if a user with this provider (github) and uid exists; if not, create it
@@ -22,10 +22,9 @@ class User < ApplicationRecord
     end
   end
 
-  def password_complexity
-    # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
-    return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
+  # def password_complexity
+  #   return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
 
-    errors.add :password, 'Requirements not met. Please use: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
-  end
+  #   errors.add :password, 'Requirements not met. Please use: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
+  # end
 end

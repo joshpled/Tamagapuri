@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="container">
-    <table class="table table-striped">
+    <table class="table table-striped table-sm">
       <tr>
         <th scope="col" style="text-align:center">Name</th>
         <th scope="col" style="text-align:center">Effectiveness</th>
@@ -15,7 +15,7 @@
           <td style="text-align:center"><%= form_for @inventory do |f| %>
               <%= f.hidden_field :user_id %>
               <%= f.hidden_field :item_id, :value => i.id %>
-              <%= f.submit "Buy #{i.name.capitalize} -- ₹#{i.price}!", class: "btn btn-primary" %>
+              <%= f.submit "₹#{i.price} || Buy ", class: "btn btn-primary" %>
             <% end %></td>
         </tr>
       <% end %>

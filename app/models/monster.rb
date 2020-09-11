@@ -1,7 +1,7 @@
 class Monster < ApplicationRecord
   belongs_to :user
   validates :name, presence: true
-  before_update :average_happiness
+  before_update :average_happiness, :monster_age
 
   scope :least_happy, -> { order(happiness: :asc)}
 
@@ -23,6 +23,14 @@ class Monster < ApplicationRecord
       self.hunger -= 1
       inventory.quantity -= 1
       self.boredom = self.boredom.clamp(0, 5)
+    when "other"
+      self.boredom += inventory.item.effectiveness
+      self.health += inventory.item.effectiveness
+      self.hunger += inventory.item.effectiveness
+      inventory.quantity -= 1
+      self.boredom = self.boredom.clamp(0, 5)
+      self.health = self.health.clamp(0, 5)
+      self.hunger = self.hunger.clamp(0, 5)
     else
       nil
     end
@@ -32,6 +40,23 @@ class Monster < ApplicationRecord
   end
 
   def monster_age
+    if self.updated_at.localtime < (Time.now - 24.hour)
+    self.age = (((Time.now - self.created_at.localtime)/1.hour).round/24)
+    self.save
+    end
+  end
+
+  def happy?
+    case self.happiness
+    when 5
+      "Great!"
+    when 4
+      "Alright"
+    when 3
+      "OK."
+    else
+      "not so well..."
+    end
   end
 
   private
