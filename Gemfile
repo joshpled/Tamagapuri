@@ -8,6 +8,7 @@ gem "omniauth"
 gem "omniauth-github"
 gem "dotenv-rails"
 gem 'devise-security'
+gem 'uix_validations'
 
 gem "cancancan"
 gem "rufo"
