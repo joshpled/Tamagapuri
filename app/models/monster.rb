@@ -9,41 +9,25 @@ class Monster < ApplicationRecord
     inventory = Inventory.find_by_id(params[:monster][:inventory_id])
     case inventory.item.item_type
     when "food"
-      self.hunger += inventory.item.effectiveness
-      self.boredom -= 1
-      inventory.quantity -= 1
-      self.hunger = self.hunger.clamp(0, 5)
+      self.update_properties({'hunger': inventory.item.effectiveness, 'boredom': -1})
     when "medicine"
-      self.health += inventory.item.effectiveness
-      self.hunger -= 2
-      inventory.quantity -= 1
-      self.health = self.health.clamp(0, 5)
+      self.update_properties({'health': inventory.item.effectiveness, 'hunger': -1})
     when "toy"
-      self.boredom += inventory.item.effectiveness
-      self.hunger -= 1
-      inventory.quantity -= 1
-      self.boredom = self.boredom.clamp(0, 5)
+      self.update_properties({'boredom': inventory.item.effectiveness, 'hunger': -1})
     when "other"
-      self.boredom += inventory.item.effectiveness
-      self.health += inventory.item.effectiveness
-      self.hunger += inventory.item.effectiveness
-      inventory.quantity -= 1
-      self.boredom = self.boredom.clamp(0, 5)
-      self.health = self.health.clamp(0, 5)
-      self.hunger = self.hunger.clamp(0, 5)
+      self.update_properties({'hunger': inventory.item.effectiveness, 'boredom': 0})
+      self.update_properties({'health': inventory.item.effectiveness, 'boredom': 0})
+      self.update_properties({'boredom': inventory.item.effectiveness, 'boredom': 0})
     else
       nil
     end
-    self.save
+    inventory.quantity -= 1
     inventory.save
     return true
   end
 
-  def monster_age
-    if self.updated_at.localtime < (Time.now - 24.hour)
-    self.age = (((Time.now - self.created_at.localtime)/1.hour).round/24)
-    self.save
-    end
+  def update_properties(hash)
+    self.update(hash.keys[0].to_s => (self.attributes[hash.keys[0].to_s] + hash.values[0]).clamp(0, 5), hash.keys[1].to_s => (self.attributes[hash.keys[1].to_s] + hash.values[1]).clamp(0, 5))
   end
 
   def happy?
@@ -58,6 +42,12 @@ class Monster < ApplicationRecord
       "not so well..."
     end
   end
+
+  def monster_age
+    if self.updated_at.localtime < (Time.now - 24.hour)
+    self.age = (((Time.now - self.created_at.localtime)/1.hour).round/24)
+    self.save
+    end
 
   private
 
