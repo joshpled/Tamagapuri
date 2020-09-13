@@ -8,7 +8,8 @@ class SlotMachinesController < ApplicationController
   def update
     @slot = SlotMachine.new
     @slot.outcomes
-    flash.now[:won] = @slot.bid(current_user)
+    @slot.bid = params[:slot_machine][:bid]
+    flash.now[:won] = @slot.bid_game(current_user)
     render "show"
   end
 end

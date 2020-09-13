@@ -1,7 +1,7 @@
 class Monster < ApplicationRecord
   belongs_to :user
   validates :name, presence: true
-  before_update :average_happiness, :monster_age
+  before_update :average_happiness
 
   scope :least_happy, -> { order(happiness: :asc)}
 
@@ -9,11 +9,11 @@ class Monster < ApplicationRecord
     inventory = Inventory.find_by_id(params[:monster][:inventory_id])
     case inventory.item.item_type
     when "food"
-      self.update_properties({'hunger': inventory.item.effectiveness, 'boredom': -1})
+      self.update_properties({'hunger': inventory.item.effectiveness, 'boredom': -(rand(1..3))})
     when "medicine"
-      self.update_properties({'health': inventory.item.effectiveness, 'hunger': -1})
+      self.update_properties({'health': inventory.item.effectiveness, 'hunger': -(rand(1..3))})
     when "toy"
-      self.update_properties({'boredom': inventory.item.effectiveness, 'hunger': -1})
+      self.update_properties({'boredom': inventory.item.effectiveness, 'hunger': -(rand(1..3))})
     when "other"
       self.update_properties({'hunger': inventory.item.effectiveness, 'boredom': 0})
       self.update_properties({'health': inventory.item.effectiveness, 'boredom': 0})
@@ -47,7 +47,8 @@ class Monster < ApplicationRecord
     if self.updated_at.localtime < (Time.now - 24.hour)
     self.age = (((Time.now - self.created_at.localtime)/1.hour).round/24)
     self.save
-    end
+    end 
+  end
 
   private
 

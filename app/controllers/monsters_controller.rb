@@ -34,7 +34,6 @@ class MonstersController < ApplicationController
 
   def update_attributes
     @monster = Monster.find_by_id(params[:id])
-    @monster.monster_age
     item = @monster.give_item_to_monster(params)
     if item != nil
       redirect_to monster_path(@monster)

@@ -1,23 +1,33 @@
 class SlotMachine < ApplicationRecord
-  def bid(user)
-    user.rupees -= 1
-    case [self.slot_1, self.slot_2, self.slot_3]
-        when [0, 0, 0]
-          x = 25
-        when [1, 1, 1]
-          x = 50
-        when [2, 2, 2]
-          x = 75
-        when [3, 3, 3]
-          x = 100
-        when [4, 4, 4]
-          x = 1000
+
+  def bid_game(user)
+    user.rupees -= self.bid
+    a = [self.slot_1, self.slot_2, self.slot_3].uniq
+    case a
+        when [0]
+          x = 100 * self.bid
+        when [1]
+          x = 150 * self.bid
+        when [2]
+          x = 175 * self.bid
+        when [3]
+          x = 200 * self.bid
+        when [4]
+          x = 1000 * self.bid
         else
-          x = 10
+          if a.length == 2
+            x = 10 * self.bid
+          else 
+            x = 0
+          end
         end
     user.rupees += x
     user.save
+    if x > 0
     "You've won #{x} rupees!"
+    else
+     "Better Luck Next Time!"
+    end 
   end
 
   def outcomes

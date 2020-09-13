@@ -2,6 +2,9 @@
         <div class="card-body">
           <h4 class="card-title text-right">Items</h4>
        <div class="w-30 d-inline-block">
+       <% if current_user.inventories.all?{ |a| a.quantity == 0 } %>
+       <h4>NO ITEMS</h4>
+       <% else %>
        <% current_user.inventories.each do |i| %>
         <% if i.quantity > 0 %>
           <%= form_for :monster, url: update_attributes_path(@monster), method: :put do |f| %>
@@ -11,6 +14,7 @@
             <%= f.submit "#{i.item.name.capitalize} - #{i.quantity}", class: "btn btn-primary btn-sm mb-1" %>
           <% end %>
         <% end %>
+      <% end %>
       <% end %>
            </div>
         </div>

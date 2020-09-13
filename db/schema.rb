@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_225747) do
+ActiveRecord::Schema.define(version: 2020_09_13_024542) do
 
   create_table "inventories", force: :cascade do |t|
     t.integer "item_id", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_225747) do
     t.integer "slot_3", default: 4
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "bid"
   end
 
   create_table "users", force: :cascade do |t|
