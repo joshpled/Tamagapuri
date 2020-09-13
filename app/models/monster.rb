@@ -44,10 +44,8 @@ class Monster < ApplicationRecord
   end
 
   def monster_age
-    if self.updated_at.localtime < (Time.now - 24.hour)
-    self.age = (((Time.now - self.created_at.localtime)/1.hour).round/24)
+    self.age = (((Time.now - self.created_at.localtime)/1.hour)/24).round
     self.save
-    end 
   end
 
   private
@@ -55,4 +53,5 @@ class Monster < ApplicationRecord
   def average_happiness
     self.happiness = (self.health + self.hunger + self.boredom) / 3
   end
+  
 end
