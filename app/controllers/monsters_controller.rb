@@ -50,8 +50,7 @@ class MonstersController < ApplicationController
     if @monster.update_attributes(monster_params)
       redirect_to monster_path(@monster)
     else
-      byebug
-      flash.now[:message] = "#{@monster.errors.messages.keys[0].to_s.capitalize} #{@monster.errors.messages.values[0][0].to_s}"
+      flash.now[:message] = "#{@monster.errors.full_messages[0]}"
       render "edit"
     end
   end
