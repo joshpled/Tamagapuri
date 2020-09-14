@@ -45,6 +45,7 @@ class Monster < ApplicationRecord
 
   def monster_age
     self.age = (((Time.now - self.created_at.localtime)/1.hour)/24).round
+    self.age = self.age.clamp(1,100)
     self.save
   end
 
