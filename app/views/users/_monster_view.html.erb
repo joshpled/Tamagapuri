@@ -5,7 +5,7 @@
         <div class="card-body">
           <% current_user.monsters.least_happy.each do |m| %>
             <div class="w-30 d-inline-block">
-              <a href="<%= monster_path(m)%>" class="btn btn-sq btn-primary">
+              <a href="<%=user_monster_path(current_user, m)%>" class="btn btn-sq btn-primary">
               <div class="align-content-center" style="margin-top: 20px;">
               <%= m.name %><br><span style="font-size: 1px;">Feeling&nbsp;<%= m.happy? %></span>
               </div>
