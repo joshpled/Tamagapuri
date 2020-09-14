@@ -1,9 +1,6 @@
 class MonstersController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-  end
-
   def new
     @user = User.find_by_id(current_user.id)
     @monster = @user.monsters.new
