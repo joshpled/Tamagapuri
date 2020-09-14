@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_09_13_024542) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "inventories", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "user_id", null: false
