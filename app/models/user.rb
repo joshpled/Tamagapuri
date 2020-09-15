@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-          :rememberable, :secure_validatable, :omniauthable, email_validation: false
+         :rememberable, :secure_validatable, :omniauthable, email_validation: false
 
   validates :username, presence: true
 
@@ -20,5 +20,4 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token(20) ## dummy password to store in my app db
     end
   end
-
 end

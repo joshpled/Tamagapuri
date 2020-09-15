@@ -1,12 +1,13 @@
 <%= form_for [current_user, @monster], class: "form-group" do |f| %>
-    <%= f.label :name, "Name:" %>
-    <%= f.text_field :name, { class: "form-control" } %>
-    <%= f.label :color, "Color:" %>
-    <%= f.select(:color, [["Blue", 1], ["Green", 2], ["Red", 3], ["White", 4]], {}, { class: "form-control" }) %>
-    <%= f.hidden_field :age %>
-    <%= f.hidden_field :health %>
-    <%= f.hidden_field :happiness %>
-    <%= f.hidden_field :hunger %>
-    <%= f.hidden_field :boredom %>
-    <br><div class="text-right"><%= f.submit submit_text, class: "btn btn-primary" %></div>
+  <%= f.label :name, "Name:" %>
+  <%= f.text_field :name, { class: "form-control" } %>
+  <%= f.label :color, "Color:" %>
+  <%= f.select(:color, [["Blue", 1], ["Green", 2], ["Red", 3], ["White", 4]], {}, { class: "form-control" }) %>
+  <%= f.hidden_field :age %>
+  <%= f.hidden_field :health %>
+  <%= f.hidden_field :happiness %>
+  <%= f.hidden_field :hunger %>
+  <%= f.hidden_field :boredom %>
+  <br>
+  <div class="text-right"><%= f.submit submit_text, class: "btn btn-primary" %></div>
 <% end %>

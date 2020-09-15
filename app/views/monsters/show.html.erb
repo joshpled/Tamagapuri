@@ -1,17 +1,12 @@
-    <div class="card-deck">
-      <%= render 'monsters/monster_main_card' %>
-      <%= render 'monsters/monster_attributes' %>
-      <%= render 'monsters/monster_items' %>
-    </div>
-     
-    <div class="d-flex justify-content-center">
-      <%= form_for @monster, url: user_monster_path(@monster), method: :delete do |f| %>
-        <%= f.submit "Delete Monster", class: "btn btn-primary", style: "margin: 20px 10px 30px 10px;" %>
-      <% end %>
-      <%= link_to "Edit Monster", edit_user_monster_path(@monster), class: "btn btn-primary", style: "margin: 20px 10px 30px 10px;"  %>
-    </div>
-
-
-    <%= stylesheet_link_tag "monsters" %>
-
-    
+<div class="card-deck">
+  <%= render 'monsters/monster_main_card' %>
+  <%= render 'monsters/monster_attributes' %>
+  <%= render 'monsters/monster_items' %>
+</div>
+<div class="d-flex justify-content-center">
+  <%= form_for @monster, url: user_monster_path(@monster), method: :delete do |f| %>
+    <%= f.submit "Delete Monster", class: "btn btn-primary", style: "margin: 20px 10px 30px 10px;" %>
+  <% end %>
+  <%= link_to "Edit Monster", edit_user_monster_path(@monster), class: "btn btn-primary", style: "margin: 20px 10px 30px 10px;"  %>
+</div>
+<%= stylesheet_link_tag "monsters" %>

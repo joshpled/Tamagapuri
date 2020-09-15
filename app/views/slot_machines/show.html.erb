@@ -2,18 +2,17 @@
   <div class="parent">
     <%= image_tag("slotmachine/slot-machine.png", id: "parent") %>
     <div class="image1">
-    <%= image_tag("slotmachine/#{@slot.slot_1}.png", id: "image_size") %>
+      <%= image_tag("slotmachine/#{@slot.slot_1}.png", id: "image_size") %>
     </div>
     <div class="image2">
-    <%= image_tag("slotmachine/#{@slot.slot_2}.png", id: "image_size") %>
+      <%= image_tag("slotmachine/#{@slot.slot_2}.png", id: "image_size") %>
     </div>
     <div class="image3">
-    <%= image_tag("slotmachine/#{@slot.slot_3}.png", id: "image_size") %>
+      <%= image_tag("slotmachine/#{@slot.slot_3}.png", id: "image_size") %>
     </div>
   </div>
 </div>
-
 <h3 class="d-flex justify-content-center">My Rupees: &#8377; <%= current_user.rupees %></h3>
- <%= render 'slot_machines/bids' %>
+<%= render 'slot_machines/bids' %>
 <%= render partial: "layouts/error", locals: {variable: :won} %>
 <%= stylesheet_link_tag "slot_machines" %>

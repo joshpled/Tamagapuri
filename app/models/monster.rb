@@ -3,21 +3,21 @@ class Monster < ApplicationRecord
   validates :name, presence: true
   before_update :average_happiness
 
-  scope :least_happy, -> { order(happiness: :asc)}
+  scope :least_happy, -> { order(happiness: :asc) }
 
   def give_item_to_monster(params)
     inventory = Inventory.find_by_id(params[:monster][:inventory_id])
     case inventory.item.item_type
     when "food"
-      self.update_properties({'hunger': inventory.item.effectiveness, 'boredom': -(rand(1..3))})
+      self.update_properties({ 'hunger': inventory.item.effectiveness, 'boredom': -(rand(1..3)) })
     when "medicine"
-      self.update_properties({'health': inventory.item.effectiveness, 'hunger': -(rand(1..3))})
+      self.update_properties({ 'health': inventory.item.effectiveness, 'hunger': -(rand(1..3)) })
     when "toy"
-      self.update_properties({'boredom': inventory.item.effectiveness, 'hunger': -(rand(1..3))})
+      self.update_properties({ 'boredom': inventory.item.effectiveness, 'hunger': -(rand(1..3)) })
     when "other"
-      self.update_properties({'hunger': inventory.item.effectiveness, 'boredom': 0})
-      self.update_properties({'health': inventory.item.effectiveness, 'boredom': 0})
-      self.update_properties({'boredom': inventory.item.effectiveness, 'boredom': 0})
+      self.update_properties({ 'hunger': inventory.item.effectiveness, 'boredom': 0 })
+      self.update_properties({ 'health': inventory.item.effectiveness, 'boredom': 0 })
+      self.update_properties({ 'boredom': inventory.item.effectiveness, 'boredom': 0 })
     else
       nil
     end
@@ -44,8 +44,8 @@ class Monster < ApplicationRecord
   end
 
   def monster_age
-    self.age = (((Time.now - self.created_at.localtime)/1.hour)/24).round
-    self.age = self.age.clamp(1,100)
+    self.age = (((Time.now - self.created_at.localtime) / 1.hour) / 24).round
+    self.age = self.age.clamp(1, 100)
     self.save
   end
 
@@ -54,5 +54,4 @@ class Monster < ApplicationRecord
   def average_happiness
     self.happiness = (self.health + self.hunger + self.boredom) / 3
   end
-  
 end
