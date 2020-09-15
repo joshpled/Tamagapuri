@@ -12,4 +12,5 @@ class SlotMachinesController < ApplicationController
     flash.now[:won] = @slot.bid_game(current_user)
     render "show"
   end
+  
 end
