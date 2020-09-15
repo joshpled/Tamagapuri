@@ -4,7 +4,7 @@ import './bootstrap_custom.js'
 
 
 $(document).ready(function(){
-  $('.toast').toast({animation: true, delay: 2000});
+  $('.toast').toast({animation: true, delay: 4000});
   $('.toast').toast('show');
   }); 
 
