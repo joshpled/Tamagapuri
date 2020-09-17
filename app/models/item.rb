@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   before_save { name.downcase! }
 
   scope :effectiveness_sort, -> { order(effectiveness: :asc) }
+  scope :alphabetical_sort, -> { order('name': :asc) }
 end

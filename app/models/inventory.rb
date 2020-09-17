@@ -22,4 +22,7 @@ class Inventory < ApplicationRecord
       "NOT ENOUGH RUPEES!"
     end
   end
+
+  #create new method
+
 end
